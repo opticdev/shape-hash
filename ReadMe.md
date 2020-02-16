@@ -1,6 +1,24 @@
 # Shape Hash
 > A PID-free, lightweight format, for saving and analyzing the behavior of APIs at scale.
 
+## Usage
+```bash
+npm install shape-hash --save
+```
+
+```javascript
+const {toHash} = require('shape-hash')
+const hash1 = toHash({firstName: 'Aidan', os: 'mac'})
+const hash2 = toHash({firstName: 'Lisa', os: 'linux'})
+const hash3 = toHash({firstName: 'Dev', os: ['mac', 'linux']})
+
+console.log(hash1)
+console.log(hash2)
+console.log(hash3)
+```
+
+[**Live Demo**](https://repl.it/@acunniffe/Shape-Hash-Demo)
+
 ## Specification
 
 ### Abstract
