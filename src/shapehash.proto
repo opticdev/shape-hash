@@ -18,4 +18,5 @@ message ShapeDescriptor {
   PrimitiveType type = 1;
   repeated FieldDescriptor fields = 2;
   repeated ShapeDescriptor items = 3;
+  repeated string rules = 4;
 }

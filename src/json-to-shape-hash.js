@@ -50,8 +50,8 @@ const PrimitiveTypes = {
   NULL: 5
 };
 
-function ShapeHash(type, fields = [], items = []) {
-  return {type, fields, items};
+function ShapeHash(type, fields = [], items = [], rules = []) {
+  return {type, fields, items, rules};
 }
 
 module.exports = {
