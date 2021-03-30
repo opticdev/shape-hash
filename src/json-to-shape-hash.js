@@ -1,4 +1,5 @@
 const {encodeShapeHash} = require('./protobuf-support');
+import {toJsonExample} = require('./to-json-example')
 
 function jsonToShapeHash(_data) {
   const jsTypeString = Object.prototype.toString.call(_data);
@@ -58,4 +59,5 @@ module.exports = {
   jsonToShapeHash,
   toBytes,
   toHash,
+  toJsonExample
 }

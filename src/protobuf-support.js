@@ -11,6 +11,21 @@ const encodeShapeHash = payload => {
   return ShapeHashProto.encode(message).finish();
 };
 
+const decodeShapeHash = (hash) => {
+  try {
+    const decodedMessage = ShapeHashProto.decode(Buffer.from(hash, "hex"));
+    return decodedMessage
+  } catch (e) {
+    if (e instanceof protobuf.util.ProtocolError) {
+      // e.instance holds the so far decoded message with missing required fields
+    } else {
+      // wire format is invalid
+    }
+  }
+}
+
+
 module.exports = {
-  encodeShapeHash
+  encodeShapeHash,
+  decodeShapeHash
 };
