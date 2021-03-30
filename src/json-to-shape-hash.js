@@ -1,5 +1,4 @@
-const {encodeShapeHash} = require('./protobuf-support');
-import {toJsonExample} = require('./to-json-example')
+const {encodeShapeHash, decodeShapeHash} = require('./protobuf-support');
 
 function jsonToShapeHash(_data) {
   const jsTypeString = Object.prototype.toString.call(_data);
@@ -54,6 +53,43 @@ const PrimitiveTypes = {
 function ShapeHash(type, fields = [], items = [], rules = []) {
   return {type, fields, items, rules};
 }
+
+function toJsonExample(hash) {
+  const decoded = decodeShapeHash(hash)
+  return toJson(decoded)
+}
+
+const types = {
+  OBJECT: 'OBJECT',
+  ARRAY: 'ARRAY',
+  STRING: 'STRING',
+  NUMBER: 'NUMBER',
+  BOOLEAN: 'BOOLEAN',
+  NULL: 'NULL',
+}
+
+function toJson(item) {
+  switch (item.type) {
+    case types.OBJECT:
+      const newObj = {}
+      item.fields.forEach(({key, hash}) => {
+        newObj[key] = toJson(hash)
+      })
+      return newObj
+    case types.ARRAY:
+      return [...item.items.map(toJson)]
+    case types.STRING:
+      return 'string'
+    case types.NUMBER:
+      return 1
+    case types.BOOLEAN:
+      return true
+    case types.NULL:
+      return null
+  }
+}
+
+
 
 module.exports = {
   jsonToShapeHash,

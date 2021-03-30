@@ -1,7 +1,7 @@
 {
   "name": "shape-hash",
   "author": "@useoptic",
-  "version": "1.0.7",
+  "version": "1.0.11",
   "description": "A PID-free, lightweight format, for saving and analyzing the behavior of APIs at scale.",
   "main": "src/json-to-shape-hash.js",
   "scripts": {
@@ -11,9 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/opticdev/shape-hash.git"
   },
-  "dependencies": {
-    "protobufjs": "6.8.8"
-  },
+  "dependencies": {},
   "files": [
     "src/**"
   ],
