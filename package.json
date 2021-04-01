@@ -1,7 +1,7 @@
 {
   "name": "shape-hash",
   "author": "@useoptic",
-  "version": "1.0.11",
+  "version": "1.0.25",
   "description": "A PID-free, lightweight format, for saving and analyzing the behavior of APIs at scale.",
   "main": "src/json-to-shape-hash.js",
   "scripts": {

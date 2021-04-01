@@ -27,7 +27,7 @@ function jsonToShapeHash(_data) {
 
 function toBytes(json) {
   const hashMessage = jsonToShapeHash(json)
-  return encodeShapeHash(hashMessage)
+  return Buffer.from(encodeShapeHash(hashMessage))
 }
 
 function toHash(json) {
