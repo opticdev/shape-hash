@@ -4,22 +4,22 @@ function jsonToShapeHash(_data) {
   const jsTypeString = Object.prototype.toString.call(_data);
   if (jsTypeString === '[object Array]') {
     return ShapeHash(
-      PrimitiveTypes.ARRAY,
+      types.ARRAY,
       [],
       _data.map(item => jsonToShapeHash(item)));
   } else if (jsTypeString === '[object Object]') {
     return ShapeHash(
-      PrimitiveTypes.OBJECT,
+      types.OBJECT,
       Object.entries(_data).map(([key, value]) => ({key, hash: jsonToShapeHash(value)})),
       []);
   } else if (jsTypeString === '[object Number]') {
-    return ShapeHash(PrimitiveTypes.NUMBER);
+    return ShapeHash(types.NUMBER);
   } else if (jsTypeString === '[object String]') {
-    return ShapeHash(PrimitiveTypes.STRING);
+    return ShapeHash(types.STRING);
   } else if (jsTypeString === '[object Null]') {
-    return ShapeHash(PrimitiveTypes.NULL);
+    return ShapeHash(types.NULL);
   } else if (jsTypeString === '[object Boolean]') {
-    return ShapeHash(PrimitiveTypes.BOOLEAN);
+    return ShapeHash(types.BOOLEAN);
   } else {
     throw new Error('Unknown type! ' + jsTypeString);
   }
@@ -40,15 +40,6 @@ function bufferToHex(buffer) {
     .map(b => b.toString(16).padStart(2, '0'))
     .join('');
 }
-
-const PrimitiveTypes = {
-  OBJECT: 0,
-  ARRAY: 1,
-  STRING: 2,
-  NUMBER: 3,
-  BOOLEAN: 4,
-  NULL: 5
-};
 
 function ShapeHash(type, fields = [], items = [], rules = []) {
   return {type, fields, items, rules};
